@@ -1,2 +1,46 @@
-# Task-Management-Platform (Full -stack)
-A full-Stack task management web application that lets users sign up, log in , and organize their tasks across To Do, In Progress, and Done columns. Built to practice designing REST APIs, relational database schemas, and JWT- based authentication from scratch. •	User signup and login with JWT authentication 	•	Create, edit, delete, and update the status of tasks 	•	Each user only sees and manages their own tasks 	•	Responsive UI built with React  Tech Stack  	•	Frontend: React, Axios, React Router 	•	Backend: Node.js, Express 	•	Database: PostgreSQL 	•	Auth: JWT, bcrypt for password hashing  What I learned  	•	Designing a relational schema with foreign keys 	•	Building and securing REST APIs with middleware-based authentication 	•	Connecting a React frontend to a Node/Express backend
+# TaskBoard (Full-Stack Starter)
+
+React + Node.js/Express + PostgreSQL, with JWT login.
+
+## 1. Database
+
+```bash
+createdb taskboard
+psql -d taskboard -f backend/schema.sql
+```
+
+## 2. Backend
+
+```bash
+cd backend
+cp .env.example .env      # then edit DATABASE_URL and JWT_SECRET
+npm install
+npm run dev               # http://localhost:5000
+```
+
+## 3. Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev               # http://localhost:5173
+```
+
+## API
+
+| Method | URL | Auth | Purpose |
+|---|---|---|---|
+| POST | `/api/auth/signup` | No | Create an account |
+| POST | `/api/auth/login` | No | Get a JWT token |
+| GET/POST | `/api/boards` | Yes | List or create boards |
+| DELETE | `/api/boards/:id` | Yes | Delete a board |
+| GET/POST | `/api/boards/:boardId/tasks` | Yes | List or create tasks |
+| PUT | `/api/tasks/:id` | Yes | Edit a task or change its status |
+| DELETE | `/api/tasks/:id` | Yes | Delete a task |
+
+## Next Steps
+
+1. Add drag-and-drop support with `@hello-pangea/dnd`
+2. Add Jest and Supertest API tests
+3. Add a `Dockerfile` and `docker-compose.yml`
+4. Add Redis caching, WebSockets, and deployment configuration
