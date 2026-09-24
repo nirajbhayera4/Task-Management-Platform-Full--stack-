@@ -1,6 +1,8 @@
 const router=require('express').Router()
 const bcrypt=require('bcrypt')
 const pool=require('../config/db')
+const jwt=require('jsonwebtoken')
+
 
 router.post('/signup', async(req,res)=>{
     try{
@@ -12,6 +14,54 @@ router.post('/signup', async(req,res)=>{
         );
         res.json(result.rows[0]);
 
+
+    }
+    catch(err){
+        res.status(500).json({
+            error:err.message
+        });
+
+    }
+});
+router.post('/login', async(req,res)=>{
+    try{
+        const {email, password}=req.body;
+        const result=await pool.query('SELECT * FROM users WHERE email=$1',[email]);
+        const user=result.rows[0];
+
+        if(!user){
+            return res.status(400).json({
+                error : "Invalid email or password"
+            });
+        }
+
+        const isMatch=await bcrypt.compare(password, user.password_hash);
+        if(!isMatch){
+            return res.status(400).json({
+                error : "Invalid email or password"
+            });
+        }
+
+        const token=jwt.sign(
+            {
+                id:user.id,
+                email:user.email,
+                
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn:'7d'
+            }
+        );
+
+        res.json({
+            token,
+            user:{
+                id:user.id,
+                name:user.name,
+                email:user.email,
+            }
+        });
 
     }
     catch(err){
