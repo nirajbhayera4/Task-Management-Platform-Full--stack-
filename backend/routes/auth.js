@@ -1,5 +1,5 @@
 const router=require('express').Router()
-const bcrypt=require('bcryptjs')
+const bcrypt=require('bcrypt')
 const pool=require('../config/db')
 
 router.post('/signup', async(req,res)=>{
