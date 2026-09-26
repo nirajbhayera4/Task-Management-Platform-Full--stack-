@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const pool = require('./config/db');
+const authMiddleware = require('./middleware/auth');
 
 const app = express();
 app.use(cors());
@@ -26,3 +27,8 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
   console.log(`server is running on port ${PORT}`)
 );
+app.get('/protected', authMiddleware,(req,res)=>{
+  res.json({
+    message:'You are authenticated!', user:req.user
+  });
+})
