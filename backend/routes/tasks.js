@@ -1,6 +1,6 @@
 const router=require('express').Router();
-const pool =require('./config/db');
-const authMiddleware = require('./middleware/auth');
+const pool =require('../config/db');
+const authMiddleware = require('../middleware/auth');
 
 // get all tasks for loggedd-in user 
 router.get('/', authMiddleware, async(req,res)=>{

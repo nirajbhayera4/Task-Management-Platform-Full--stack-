@@ -4,6 +4,7 @@ require('dotenv').config();
 const pool = require('./config/db');
 const authMiddleware = require('./middleware/auth');
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -22,6 +23,8 @@ app.get('/test-db', async (req, res) => {
 });
 
 app.use('/auth', require('./routes/auth'));
+app.use('/tasks', require('./routes/tasks'));
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
@@ -32,3 +35,4 @@ app.get('/protected', authMiddleware,(req,res)=>{
     message:'You are authenticated!', user:req.user
   });
 })
+
