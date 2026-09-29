@@ -9,18 +9,61 @@ function Dashboard() {
   const navigate=useNavigate();
 
 
-  const fetchTasks=async()=>{};
+  const fetchTasks=async()=>{
+    try{
+      const res=await api.get('/tasks');
+      setTasks(res.data);
+    }
+    catch(err){
+      console.error(err);
+    }
+  };
 
   useEffect(()=>{
     fetchTasks();
   },[]);
 
-  const handleTasks=async()=>{};
+  const handleTasks=async(e)=>{
+    e.preventDefault();
+    try{
+      await api.post('/tasks',{title,description, status :'todo'})
+      setTitle('');
+      setDescription('');
+      fetchTasks();
 
-  const updateStatus=async()=>{};
-  const deleteTask=async()=>{};
+    }
+    catch(err){
+      console.error(err);
 
-  const handleLogout=async()=>{};
+    }
+  };
+
+  const updateStatus=async(tasks, newStatus)=>{
+    try{
+      await api.put(`/tasks/${tasks.id}`,{...tasks,status : newStatus});
+
+    }
+    catch(err){
+      console.error(err);
+    }
+  };
+  const deleteTask=async(id)=>{
+    try{
+      await api.delete(`/tasks/${id}`);
+      fetchTasks();
+
+    }
+    catch(err){
+      console.error(err);
+    }
+  };
+
+  const handleLogout=async()=>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    navigate('/login');
+    
+  };
 
 
   const columns=['todo','in-progress','done'];
@@ -38,7 +81,7 @@ function Dashboard() {
       </form>
 
       <div>
-        
+
       </div>
     </div>
   );
