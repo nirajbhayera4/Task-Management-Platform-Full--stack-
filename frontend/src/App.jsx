@@ -2,6 +2,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard';  
 import Signup from './Pages/Signup';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 
@@ -11,8 +12,8 @@ function App(){
     <Routes>
       <Route path="/" element={<Login/>}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
-      <Route path="/dashboard" element={<Dashboard/>}></Route>
-
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}></Route>
+      
     </Routes>
     
     
