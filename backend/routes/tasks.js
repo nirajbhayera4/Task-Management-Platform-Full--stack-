@@ -42,7 +42,7 @@ router.post('/',authMiddleware, async(req,res)=>{
 });
 
 // update the task 
-router.put('/', authMiddleware, async(req,res)=>{
+router.put('/:id', authMiddleware, async(req,res)=>{
     try{
         const {title,description,status}=req.body;
         const result=await pool.query(
@@ -77,6 +77,22 @@ router.delete('/:id', authMiddleware, async (req, res) => {
       return res.status(404).json({ error: 'Task not found' });
     }
     res.json({ message: 'Task deleted' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.put('/:id/reminder', authMiddleware, async (req, res) => {
+  try {
+    const { reminder_time } = req.body;
+    const result = await pool.query(
+      'UPDATE tasks SET reminder_time = $1, reminder_sent = FALSE WHERE id = $2 AND user_id = $3 RETURNING *',
+      [reminder_time, req.params.id, req.user.id]
+    );
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+    res.json(result.rows[0]);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

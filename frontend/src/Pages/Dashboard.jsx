@@ -4,10 +4,12 @@ import { gsap } from 'gsap';
 import api from '../api/axios';
 import './Dashboard.css';
 
+
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [reminderTimes, setReminderTimes] = useState({});
   const navigate = useNavigate();
   const boardRef = useRef(null);
   const formRef = useRef(null);
@@ -100,6 +102,15 @@ function Dashboard() {
     });
   };
 
+  const setReminder = async (taskId, reminderTime) => {
+  try {
+    await api.put(`/tasks/${taskId}/reminder`, { reminder_time: reminderTime });
+    fetchTasks();
+  } catch (err) {
+    console.error(err);
+  }
+};
+
   const columns = ['todo', 'in-progress', 'done'];
   const columnTitles = { todo: 'To Do', 'in-progress': 'In Progress', done: 'Done' };
 
@@ -142,6 +153,24 @@ function Dashboard() {
                 >
                   <strong>{task.title}</strong>
                   <p>{task.description}</p>
+                  <div className="task-reminder">
+                    <input
+                      type="datetime-local"
+                      aria-label={`Reminder time for ${task.title}`}
+                      value={reminderTimes[task.id] ?? ''}
+                      onChange={(e) => setReminderTimes((current) => ({
+                        ...current,
+                        [task.id]: e.target.value,
+                      }))}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setReminder(task.id, reminderTimes[task.id])}
+                      disabled={!reminderTimes[task.id]}
+                    >
+                      Save Reminder
+                    </button>
+                  </div>
                   <div className="task-card-footer">
                     <select
                       value={task.status}
