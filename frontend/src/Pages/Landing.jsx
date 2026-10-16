@@ -80,19 +80,42 @@ function Landing() {
                 <div className="landing-hero-preview">
                     <div className="landing-preview-col">
                         <div className="landing-preview-col-title">To Do</div>
-                        <div className="landing-preview-card" style={{borderLeftColor: '#0079bf'}}>Design mockups</div>
-                        <div className="landing-preview-card" style={{borderLeftColor: '#0079bf'}}>Write docs</div>
+                        <div className="landing-preview-card" style={{ borderLeftColor: '#0079bf' }}>Design mockups</div>
+                        <div className="landing-preview-card" style={{ borderLeftColor: '#0079bf' }}>Write docs</div>
                     </div>
                     <div className="landing-preview-col">
                         <div className="landing-preview-col-title">In progress</div>
-                        <div className="landing-preview-card" style={{borderLeftColor: '#ff991f'}}>Build API</div>
+                        <div className="landing-preview-card" style={{ borderLeftColor: '#ff991f' }}>Build API</div>
                     </div>
                     <div className="landing-preview-col">
                         <div className="landing-preview-col-title">Done</div>
-                        <div className="landing-preview-card" style={{borderLeftColor: '#61bd4f'}}>DB schema</div>
+                        <div className="landing-preview-card" style={{ borderLeftColor: '#61bd4f' }}>DB schema</div>
                     </div>
                 </div>
             </section>
+            {/*features*/}
+            <section className="landing-features" id="features">
+                <div className="landing-features-inner">
+                    <h2>Everything you need to stay on track</h2>
+                    <div className="landing-feature-grid">
+                        {FEATURES.map((f) => (
+                            <div className="landing-feature-card" key={f.title}>
+                                <div className="landing-feature-icon">{f.icon}</div>
+                                <h3>{f.title}</h3>
+                                <p>{f.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            {/*CTA*/}
+            <section>
+                <h2>Ready to get organized</h2>
+                <p>
+                Create your first board in under a minute.
+                </p>
+            </section>
+
 
 
         </div>
