@@ -52,7 +52,7 @@ function Landing() {
                             </svg>
 
                         </span>
-                        <span className="landing-logo-text">Task Manager</span>
+                        <span className="landing-logo-text">LikeTrello</span>
                     </div>
                     <nav className="landing-nav-links">
                         <a href="#features">Features</a>
@@ -63,6 +63,20 @@ function Landing() {
                 </div>
 
             </header>
+
+            {/*hero*/}
+            <section className="landing-hero">
+                <div className="landing-hero-text">
+                    <h1>Organise your work, <span className="landing-accent">
+                        one task at a time</span></h1>
+                    <p>A simple, visual board to plan, track, and finish your tasks-built for individual and small teams who want clarity without the clutter.</p>
+                    <div>
+                        <Link to="/signup" className="landing-btn landing-btn-primary landing-btn-lg">Get Started- it's free</Link>
+                        <a href="#features" className="landing-btn landing-btn-secondary landing-btn-lg">See how it works</a>
+                    </div>
+                    <p className="landing-hero-note">No credit card required</p>
+                </div>
+            </section>
 
 
         </div>
