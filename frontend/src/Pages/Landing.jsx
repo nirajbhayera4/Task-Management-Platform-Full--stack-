@@ -76,6 +76,22 @@ function Landing() {
                     </div>
                     <p className="landing-hero-note">No credit card required</p>
                 </div>
+
+                <div className="landing-hero-preview">
+                    <div className="landing-preview-col">
+                        <div className="landing-preview-col-title">To Do</div>
+                        <div className="landing-preview-card" style={{borderLeftColor: '#0079bf'}}>Design mockups</div>
+                        <div className="landing-preview-card" style={{borderLeftColor: '#0079bf'}}>Write docs</div>
+                    </div>
+                    <div className="landing-preview-col">
+                        <div className="landing-preview-col-title">In progress</div>
+                        <div className="landing-preview-card" style={{borderLeftColor: '#ff991f'}}>Build API</div>
+                    </div>
+                    <div className="landing-preview-col">
+                        <div className="landing-preview-col-title">Done</div>
+                        <div className="landing-preview-card" style={{borderLeftColor: '#61bd4f'}}>DB schema</div>
+                    </div>
+                </div>
             </section>
 
 
