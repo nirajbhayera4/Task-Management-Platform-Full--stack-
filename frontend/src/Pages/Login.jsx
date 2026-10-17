@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useNavigate, Link} from 'react-router-dom';
 import api from '../api/axios';
+import './Login.css';
 
 function Login(){
     const [email, setEmail]=useState();
@@ -25,7 +26,7 @@ function Login(){
     }
     return (
         <div style={{maxWidth :400,margin:'50px auto'}}>
-            <h2>Login</h2>
+            <h2 className="login-heading">Login</h2>
             <form onSubmit={handleSubmit}>
                 <input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} required /><br/><br />
                 <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} required /><br/><br />

@@ -1,0 +1,8 @@
+.login-heading{
+    color:rgb(14, 14, 14);
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #0079bf;
+    font-family: 'Inter',-apple-system,'Segoe UI', 'sans-serif';
+    border-radius: 10px;
+}
