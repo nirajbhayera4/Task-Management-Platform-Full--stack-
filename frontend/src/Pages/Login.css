@@ -6,3 +6,44 @@
     font-family: 'Inter',-apple-system,'Segoe UI', 'sans-serif';
     border-radius: 10px;
 }
+.login-form{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: #b5c6d0;
+    font-family: 'Inter',-apple-system,'Segoe UI', 'sans-serif';
+    border-radius: 5px;
+}
+.first-input{
+    text-align: center;
+    
+    margin-top: 20px;
+    
+}
+.second-input{
+    text-align: center;
+   
+}
+.signup-link{
+    text-align: center;
+}
+.signup-btn{
+    background: white;
+  border-radius: 5px;
+  padding: 0px 10px;
+  margin-bottom: 6px;
+  background-color: #0079bf;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+.signup-btn:hover{
+    background-color: #026aa7;
+}
+.signup-link{
+    font-size: 15px;
+}
+.signup-hover{
+    color: #0079bf;
+}
