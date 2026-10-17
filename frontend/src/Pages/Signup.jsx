@@ -1,6 +1,7 @@
 import { useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import api from '../api/axios';
+import './Signup.css';
 
 function Signup(){
     const [name, setName]=useState('');
@@ -24,20 +25,20 @@ function Signup(){
     }
 
     return (
-        <div>
-            <h2>Sign up</h2>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)} required/><br/><br/>
-                <input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} required/><br/><br/>
-                <input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} required/><br/><br/>
+        <div className="signup-container">
+            <h2 className="signup-heading">Sign up</h2>
+            <form className="signup-form" onSubmit={handleSubmit}>
+                <input className="input-field" type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)} required/><br/><br/>
+                <input className="input-field" type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} required/><br/><br/>
+                <input className="input-field" type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} required/><br/><br/>
                 {error && <p style={{color :'red'}}>{error}</p>}
-                <button type="submit">Sign up</button>
+                <button className="login-btn" type="submit">Sign up</button>
 
                 
                 
 
             </form>
-            <p>Already have an account?<Link to="/login">Login</Link></p>
+            <p className="login-link">-Already have an account?<Link className="login-btn" to="/login">Login</Link></p>
         </div>
     );
 
