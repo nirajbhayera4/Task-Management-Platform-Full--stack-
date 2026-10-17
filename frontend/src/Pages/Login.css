@@ -47,3 +47,16 @@
 .signup-hover{
     color: #0079bf;
 }
+.login-btn{
+    border-radius: 5px;
+    padding: 0px 10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    background-color: #0079bf;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+.login-btn:hover{
+    background-color: #026aa7;
+}
