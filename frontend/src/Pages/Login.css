@@ -1,8 +1,8 @@
 .login-heading{
-    color:rgb(14, 14, 14);
+    color:rgb(118, 114, 114);
     text-align: center;
     margin-bottom: 30px;
-    background-color: #0079bf;
+    background-color: #d8dee1;
     font-family: 'Inter',-apple-system,'Segoe UI', 'sans-serif';
     border-radius: 10px;
 }
@@ -63,6 +63,5 @@
 .login-container{
     padding: 20px;
     background-color: #f7f8fa;
-    border-radius: 10px;
 }
 
