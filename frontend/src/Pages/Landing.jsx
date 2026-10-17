@@ -109,13 +109,18 @@ function Landing() {
                 </div>
             </section>
             {/*CTA*/}
-            <section>
+            <section className="landing-cta">
                 <h2>Ready to get organized</h2>
                 <p>
                 Create your first board in under a minute.
                 </p>
+                <Link to="/signup" className="landing-btn landing-btn-light">Sign up free</Link>
             </section>
 
+            {/*footer*/}
+           <footer className="landing-footer">
+            <p>© 2026 Task Manager. Built as a learning project.</p>
+           </footer>
 
 
         </div>
