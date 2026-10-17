@@ -60,3 +60,9 @@
 .login-btn:hover{
     background-color: #026aa7;
 }
+.login-container{
+    padding: 20px;
+    background-color: #f7f8fa;
+    border-radius: 10px;
+}
+
