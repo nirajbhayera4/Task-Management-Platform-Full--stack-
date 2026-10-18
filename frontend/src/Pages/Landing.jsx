@@ -110,7 +110,7 @@ function Landing() {
             </section>
             {/*CTA*/}
             <section className="landing-cta">
-                <h2>Ready to get organized</h2>
+                <h2>Ready to get organized ?</h2>
                 <p>
                 Create your first board in under a minute.
                 </p>

@@ -32,7 +32,7 @@ function Login(){
                 <input className="second-input" type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} required /><br/><br />
 
                 {error && <p style={{color :'red'}}>{error}</p>}
-                <button className="login-btn" type="submit">Login</button>
+                <button onClick={handleSubmit} className="login-btn" type="submit">Login</button>
             </form>
             <p className="signup-link">Dont have an account?<Link className="signup-btn"  to="/signup"> Sign up</Link></p>
 
