@@ -2,26 +2,43 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   max-width: 100%;
   overflow-x: hidden;
+  margin: 0;
 }
+
 .dashboard-container {
-  max-width: 1000px;
-  margin: 40px auto;
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
   padding: 0 20px;
   font-family: 'Segoe UI', sans-serif;
+}
+
+/* Top header */
+.header-class {
+  font-size: 24px;
+  font-weight: 500;
+  color: #1f3a5f;
+  margin: 0 0 16px;
+  background: #56afe3;
+  padding: 12px;
+  border-radius: 10px;
 }
 
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .dashboard-header h2 {
   color: #1f3a5f;
+  font-size: 22px;
   margin: 0;
 }
 
@@ -33,27 +50,32 @@ html, body {
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
+  flex-shrink: 0;
 }
 
 .logout-btn:hover {
   background: #c0392b;
 }
 
+/* Add task form */
 .add-task-form {
   display: flex;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 30px;
-  background: #f5f7fa;
-  padding: 16px;
+  margin-bottom: 24px;
+  background: #56afe3;
+  padding: 14px;
   border-radius: 10px;
 }
 
 .add-task-form input {
   flex: 1;
+  min-width: 0;
   padding: 10px 12px;
   border: 1px solid #d0d7de;
   border-radius: 6px;
   font-size: 14px;
+  background: white;
 }
 
 .add-task-form input:focus {
@@ -65,69 +87,130 @@ html, body {
   background: #1f3a5f;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 16px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .add-task-form button:hover {
   background: #15293f;
 }
 
+/* Board layout */
 .board {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+  width: 100%;
 }
 
+/* Columns grow with their content */
 .column {
-  flex: 1;
+  min-width: 0;
+  min-height: 150px;
+  height: auto;
+  align-self: start;
   background: #f0f2f5;
   border-radius: 10px;
-  padding: 16px;
-  min-height: 300px;
+  padding: 12px;
 }
 
 .column h3 {
   color: #1f3a5f;
   font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 14px;
+  margin: 0 0 12px;
   border-bottom: 2px solid #1f3a5f;
   padding-bottom: 8px;
 }
 
+/* Compact task cards */
 .task-card {
+  width: 100%;
+  height: auto;
+  min-height: 0;
   background: white;
   border-radius: 8px;
-  padding: 12px 14px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 12px;
+  margin: 0 0 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow-wrap: anywhere;
+  transition: box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
 }
 
 .task-card strong {
   display: block;
   color: #1a1a1a;
-  font-size: 15px;
-  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 5px;
 }
 
 .task-card p {
   color: #666;
   font-size: 13px;
-  margin: 0 0 10px 0;
+  line-height: 1.4;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
 }
 
+/* Reminder controls */
+.task-reminder {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.task-reminder input {
+  width: 100%;
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid #d0d7de;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.task-reminder button {
+  align-self: flex-start;
+  max-width: 100%;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 5px;
+  background: #1f3a5f;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.task-reminder button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Status and delete actions */
 .task-card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .task-card select {
-  padding: 4px 8px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 5px 6px;
   border-radius: 4px;
   border: 1px solid #d0d7de;
+  background: white;
   font-size: 12px;
 }
 
@@ -138,38 +221,113 @@ html, body {
   cursor: pointer;
   font-size: 12px;
   font-weight: 500;
+  padding: 5px 0;
 }
 
 .delete-btn:hover {
   text-decoration: underline;
 }
-@media(max-width: 768px) {
-  .board{
-    flex-direction: column;
-  }
-  .column{
-    width:100%;
-  }
+
+/* Tablet and mobile */
+@media (max-width: 768px) {
   .dashboard-container {
+    margin: 20px auto;
+    padding: 0 14px;
+  }
+
+  .board {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .column {
+    width: 100%;
+    min-height: 100px;
     padding: 12px;
   }
-  .add-task-form{
+
+  .add-task-form {
     flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .add-task-form input,
+  .add-task-form button {
+    width: 100%;
+  }
+
+  .dashboard-header h2 {
+    font-size: 19px;
+  }
+
+  .header-class {
+    font-size: 21px;
+  }
+
+  .task-card {
+    padding: 12px;
   }
 }
+
+/* Small phones */
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 0 10px;
+  }
+
+  .dashboard-header {
+    gap: 8px;
+  }
+
+  .dashboard-header h2 {
+    font-size: 17px;
+  }
+
+  .logout-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .header-class {
+    font-size: 20px;
+  }
+
+  .column {
+    padding: 10px;
+  }
+
+  .task-card {
+    padding: 10px;
+  }
+
+  .task-card-footer {
+    justify-content: space-between;
+  }
+
+  .task-reminder input {
+    font-size: 12px;
+  }
+}
+
+/* Landing page styles */
 @media (max-width: 768px) {
   .landing-hero {
     flex-direction: column;
     padding: 40px 24px;
     text-align: center;
   }
+
   .landing-hero-text p {
     max-width: 100%;
     margin: 0 auto;
   }
+
   .landing-hero-actions {
     justify-content: center;
   }
+
   .landing-feature-grid {
     flex-direction: column;
   }
@@ -179,10 +337,89 @@ html, body {
   .landing-nav {
     padding: 0 20px;
   }
+
   .landing-hero-text h1 {
     font-size: 28px;
   }
-  .landing-cta, .landing-features {
+
+  .landing-cta,
+  .landing-features {
     padding: 48px 24px;
   }
+}
+
+.landing-nav {
+  padding: 0 20px;
+}
+
+.landing-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.landing-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.landing-logo-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  background: #0079bf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-logo-text {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.landing-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.landing-nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #44546f;
+}
+
+.landing-nav-login {
+  font-weight: 600 !important;
+  color: #172b4d !important;
+}
+
+.landing-btn {
+  display: inline-block;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.landing-btn-primary {
+  background: #0079bf;
+  color: white !important;
+}
+.icons-1:hover{
+  color: #0079bf;
+}
+.icons-2:hover{
+  color: #0079bf;
+}
+.icons-3:hover{
+  color: #0079bf;
 }

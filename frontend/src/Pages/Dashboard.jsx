@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import api from '../api/axios';
 import './Dashboard.css';
+import { Link } from 'react-router-dom';
+import './Landing.css'
+import { FaGithub, FaLinkedin, FaSearch } from 'react-icons/fa';
 
 
 function Dashboard() {
@@ -103,21 +106,49 @@ function Dashboard() {
   };
 
   const setReminder = async (taskId, reminderTime) => {
-  try {
-    await api.put(`/tasks/${taskId}/reminder`, { reminder_time: reminderTime });
-    fetchTasks();
-  } catch (err) {
-    console.error(err);
-  }
-};
+    try {
+      await api.put(`/tasks/${taskId}/reminder`, { reminder_time: reminderTime });
+      fetchTasks();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const columns = ['todo', 'in-progress', 'done'];
   const columnTitles = { todo: 'To Do', 'in-progress': 'In Progress', done: 'Done' };
 
   return (
     <div className="dashboard-container">
+      <header className="">
+        <div className="landing-nav-inner">
+          <div className="landing-logo">
+            <span className="landing-logo-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="4" width="7" height="16" rx="1.5" fill="white" />
+                <rect x="13" y="4" width="7" height="9" rx="1.5" fill="white" fillOpacity="0.8" />
+              </svg>
+
+            </span>
+            <span className="landing-logo-text">LikeTrello</span>
+          </div>
+          <nav className="landing-nav-links">
+            <a className="icons-1" href="#" target="_blank" rel=" noreferrer" >
+              <FaSearch size={18}/>
+            </a>
+            <a className="icons-2" href="#" target="_blank" rel=" noreferrer" >
+              <FaGithub size={18}/>
+            </a>
+            <a className="icons-3" href="#" target="_blank" rel=" noreferrer" >
+              <FaLinkedin size={18}/>
+            </a>
+            
+            
+          </nav>
+        </div>
+
+      </header>
       <div className="dashboard-header">
-        <h2>My Tasks</h2>
+        <h2>My LikeTrello Board</h2>
         <button className="logout-btn" onClick={handleLogout}>Logout</button>
       </div>
 
