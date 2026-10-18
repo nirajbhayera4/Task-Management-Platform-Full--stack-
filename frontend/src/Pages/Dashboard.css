@@ -135,3 +135,46 @@
 .delete-btn:hover {
   text-decoration: underline;
 }
+@media(max-width: 768px) {
+  .board{
+    flex-direction: column;
+  }
+  .column{
+    width:100%;
+  }
+  .dashboard-container {
+    padding: 12px;
+  }
+  .add-task-form{
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) {
+  .landing-hero {
+    flex-direction: column;
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .landing-hero-text p {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .landing-hero-actions {
+    justify-content: center;
+  }
+  .landing-feature-grid {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-nav {
+    padding: 0 20px;
+  }
+  .landing-hero-text h1 {
+    font-size: 28px;
+  }
+  .landing-cta, .landing-features {
+    padding: 48px 24px;
+  }
+}

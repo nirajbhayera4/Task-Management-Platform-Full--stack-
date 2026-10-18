@@ -25,7 +25,7 @@ function Login(){
         }
     }
     return (
-        <div className="login-container" style={{maxWidth :400,margin:'50px auto'}}>
+        <div className="login-container" style={{maxWidth :400,margin:'50px auto', padding:'0 20px'}}>
             <h2 className="login-heading">Login</h2>
             <form  className="login-form" onSubmit={handleSubmit}>
                 <input className="first-input" type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} required /><br/><br />
